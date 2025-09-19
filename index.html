@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://loveemma.carrd.co/assets/images/gallery02/d3788757.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Social Media Content Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#0808F5',
+              'brand-secondary': '#FF3366',
+            },
+          },
+        },
+      }
+    </script>
+  <style>
+    @keyframes gradient-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient-animation 15s ease infinite;
+    }
+    .brand-gradient-bg {
+       background: linear-gradient(135deg, rgba(8, 8, 245, 0.1), rgba(255, 51, 102, 0.1), #ffffff);
+       background-size: 200% 200%;
+       animation: gradient-animation 20s ease infinite;
+    }
+    .dark .brand-gradient-bg {
+        background: linear-gradient(135deg, rgba(8, 8, 245, 0.1), rgba(255, 51, 102, 0.1), #111827); /* Dark bg */
+    }
+     @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .animate-pulse-slow {
+      animation: pulse 3s infinite ease-in-out;
+    }
+    @keyframes glow {
+        0%, 100% { text-shadow: 0 0 5px #FF3366, 0 0 10px #FF3366; }
+        50% { text-shadow: 0 0 20px #FF3366, 0 0 30px #FF3366; }
+    }
+    .animate-glow {
+        animation: glow 2.5s ease-in-out infinite;
+    }
+    @keyframes slideInUp {
+        from { transform: translate(-50%, 100px); opacity: 0; }
+        to { transform: translate(-50%, 0); opacity: 1; }
+    }
+    .animate-slide-in-up {
+        animation: slideInUp 0.4s ease-out forwards;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.15.0"
+  }
+}
+</script>
+<!-- Add Babel Standalone for JSX/TS transpilation -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-white text-gray-800 brand-gradient-bg dark:bg-gray-900 dark:text-gray-200">
+    <div id="root"></div>
+    <script>
+      // Polyfill for process.env to prevent crashes on static hosting.
+      // The API_KEY will be undefined, but the app will not crash on load.
+      // The execution environment is expected to provide a real API key.
+      if (typeof process === 'undefined') {
+        window.process = { env: { API_KEY: undefined } };
+      }
+    </script>
+    <!-- Change script type to text/babel for Babel to transpile it -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
